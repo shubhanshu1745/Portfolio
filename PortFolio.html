@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubhanshu Pandey - Portfolio</title>
+<style>
+:root {
+  --bg-color: #1e1e1e;
+  --text-color: #d4d4d4;
+  --accent-color: #569cd6;
+  --secondary-color: #4ec9b0;
+  --tertiary-color: #ce9178;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Consolas', monospace;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: #252526;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--secondary-color);
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(rgba(30, 30, 30, 0.8), rgba(30, 30, 30, 0.8)),
+    url('matrix-background.jpg') no-repeat center center/cover;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch {
+  2%, 64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%, 60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+
+.hero-content p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+}
+
+section {
+  padding: 80px 0;
+}
+
+h2 {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+#techH {
+  color: var(--secondary-color);
+}
+
+.skills-grid, .project-grid, .achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.skill-card, .project-card, .achievement-card {
+  background-color: rgba(37, 37, 38, 0.7);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before, .project-card::before, .achievement-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent, var(--accent-color), transparent 30%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.skill-card:hover::before, .project-card:hover::before, .achievement-card:hover::before {
+  opacity: 1;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  100% { transform: rotate(1turn); }
+}
+
+.skill-card:hover, .project-card:hover, .achievement-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 255, 153, 0.2);
+}
+
+.skill-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+}
+
+footer {
+  background-color: #252526;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+}
+
+.social-links a {
+  color: var(--accent-color);
+  font-size: 24px;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--secondary-color);
+}
+
+/* Terminal effect */
+.terminal {
+  background-color: #0c0c0c;
+  border-radius: 5px;
+  padding: 20px;
+  font-family: 'Courier New', monospace;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+.terminal::before {
+  content: '$ ';
+  color: var(--accent-color);
+}
+
+.typing-effect {
+  overflow: hidden;
+  border-right: 2px solid var(--accent-color);
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--accent-color) }
+}
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Shubhanshu Pandey</h1>
+      <p>Computer Science & Engineering Student</p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <div class="terminal">
+      <span class="typing-effect">
+        Hi, I'm Shubhanshu Pandey, a passionate Computer Science & Engineering student.
+        I'm seeking a challenging position in a dynamic organization to leverage my
+        strong knowledge of Java, SQL, DSA, SpringBoot, and React. I'm committed to
+        continuous learning and driving innovation to contribute to organizational growth.
+      </span>
+    </div>
+  </section>
+
+  <section id="skills" class="container">
+    <h2>Technical Arsenal</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <i class="skill-icon fas fa-code"></i>
+        <h3 id="techH">Languages</h3>
+        <p>C++, Java, SQL</p>
+      </div>
+      <div class="skill-card">
+        <i class="skill-icon fas fa-globe"></i>
+        <h3 id="techH">Web Technologies</h3>
+        <p>HTML5, CSS3, JavaScript (ES6+)</p>
+      </div>
+      <div class="skill-card">
+        <i class="skill-icon fas fa-layer-group"></i>
+        <h3 id="techH">Frameworks</h3>
+        <p>Spring Boot, React, Node.js</p>
+      </div>
+      <div class="skill-card">
+        <i class="skill-icon fas fa-database"></i>
+        <h3 id="techH">Databases</h3>
+        <p>MySQL, MongoDB, PostgreSQL</p>
+      </div>
+      <div class="skill-card">
+        <i class="skill-icon fas fa-tools"></i>
+        <h3 id="techH">Development Tools</h3>
+        <p>VS Code, IntelliJ IDEA, Postman, Docker</p>
+      </div>
+      <div class="skill-card">
+        <i class="skill-icon fas fa-code-branch"></i>
+        <h3 id="techH">Version Control</h3>
+        <p>Git, GitHub, GitLab</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="container">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3 id="techH">Buy Busy</h3>
+        <p>A shopping app providing a smooth user experience.</p>
+    </div>
+      <div class="project-card">
+        <h3 id="techH">E-Commerce Backend</h3>
+        <p>Microservices-based backend for an e-commerce platform.</p>
+      </div>
+      <div class="project-card">
+        <h3 id="techH">Personal Portfolio</h3>
+        <p>My personal website showcasing my skills and projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="container">
+    <h2 id="techH">Achievements</h2>
+    <div class="achievement-grid">
+      <div class="achievement-card">
+        <h3 id="techH">Coding Ninjas</h3>
+        <p>Solved 950+ problems on the platform.</p>
+      </div>
+      <div class="achievement-card">
+        <h3 id="techH">Certifications</h3>
+        <p>Front-End Programming, DSA</p>
+      </div>
+      <div class="achievement-card">
+        <h3 id="techH">HackerRank</h3>
+        <p>Achievements in C, C++, and Java.</p>
+      </div>
+      <div class="achievement-card">
+        <h3 id="techH">Leetcode</h3>
+        <p>Solved 200+ Problems</p>
+      </div>
+      <div class="achievement-card">
+        <h3 id="techH">Code360</h3>
+        <p>All bages for Coding</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <h2>Contact</h2>
+    <p>Feel free to reach out to me via email at <a href="mailto:example@example.com">example@example.com</a></p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2024 Shubhanshu Pandey. All rights reserved.</p>
+</footer>
+
+<!-- Font Awesome icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
